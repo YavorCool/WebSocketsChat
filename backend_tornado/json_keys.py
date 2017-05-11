@@ -1,0 +1,8 @@
+USER_TOKEN_FIELD = "token"
+USER_USERNAME_FIELD = "username"
+USER_MESSAGES_LIST = "messages"
+USER_CHATS_LIST = "chats"
+MSG_SENDER_TOKEN_FIELD = "sender"
+MSG_RECIPIENT_TOKEN_FIELD = "recipient"
+MSG_TEXT_FIELD = "text"
+CHAT_RECIPIENT_TOKEN_FIELD = "recipient"
