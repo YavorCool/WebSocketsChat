@@ -19,7 +19,7 @@ db_service = DBService.inst()
 class UsersHandler(tornado.web.RequestHandler):
 
     def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:3000")
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:4200")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
         self.set_header("Access-Control-Allow-Credentials", "true"),
@@ -33,7 +33,7 @@ class UsersHandler(tornado.web.RequestHandler):
 
 class UserHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:3000")
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:4200")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
         self.set_header("Access-Control-Allow-Credentials", "true"),
@@ -48,7 +48,7 @@ class UserHandler(tornado.web.RequestHandler):
 class IndexHandler(tornado.web.RequestHandler):
 
     def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:3000")
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:4200")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
         self.set_header("Access-Control-Allow-Credentials", "true"),
@@ -77,7 +77,7 @@ class ChatsHandler(tornado.web.RequestHandler):
         return
 
     def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:3000"),
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:4200"),
         self.set_header("Access-Control-Allow-Credentials", "true"),
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')

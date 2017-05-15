@@ -1,0 +1,25 @@
+version: '3.0' # specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  frontend: # name of the first service
+    build: frontend_angular2
+    ports:
+        - "3000:3000"
+    links:
+        - backend
+    command: npm start
+
+  backend: #name of the second service
+    build: backend_tornado # specify the directory of the Dockerfile
+    ports:
+      - "8000:8000" #specify ports forewarding
+    links:
+        - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/mongodb

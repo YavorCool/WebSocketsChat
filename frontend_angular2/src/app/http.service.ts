@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 export class HttpService {
   private users_url = 'http://localhost:8000/users';
   private chats_url = 'http://localhost:8000/chats';
-  private user_url = 'http://localhost:8000/user'
+  private user_url = 'http://localhost:8000/user';
 
   constructor(private http: Http){}
 
