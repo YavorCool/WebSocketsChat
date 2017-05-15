@@ -36,7 +36,6 @@ export class ChatsComponent implements OnInit {
   }
 
   getCurUser(): void{
-    console.log("cookies: "+this._cookieService.get("token"));
     this.httpService.getUser(this._cookieService.get("token")).then(user => this.user = user)
   }
 

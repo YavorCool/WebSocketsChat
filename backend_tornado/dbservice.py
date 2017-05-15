@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from json_keys import *
 
 
-DB_URI = 'mongodb://localhost:27017/'
+DB_URI = 'mongodb://mongo:27017/'
 
 
 class DBService:
@@ -15,7 +15,7 @@ class DBService:
         return DBService.__instance
 
     def __init__(self):
-        self.client = MongoClient(DB_URI)
+        self.client = MongoClient(DB_URI, connect=False)
         self.db = self.client.chat_db
         self.users = self.db.users
 
@@ -90,7 +90,6 @@ if __name__ == "__main__":
     dbService.remove_user('sometoken_2')
     print(dbService.get_all_users())
 
-    dbService.clear_db()
 
 
 
