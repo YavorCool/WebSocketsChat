@@ -29,13 +29,16 @@ class DBService:
         self.users.remove({USER_TOKEN_FIELD: token})
 
     def get_user(self, token):
-        return self.users.find_one({USER_TOKEN_FIELD: token})
+        return self.users.find_one({USER_TOKEN_FIELD: token}, {"_id": 0})
 
     def get_all_users(self):
         users = list()
-        for user in self.users.find():
+        for user in self.users.find({}, {"_id": 0}):
             users.append(user)
         return users
+
+    def clear_db(self):
+        self.users.remove({}, {"justOne": False})
 
 
 # Testing
@@ -86,6 +89,8 @@ if __name__ == "__main__":
 
     dbService.remove_user('sometoken_2')
     print(dbService.get_all_users())
+
+    dbService.clear_db()
 
 
 

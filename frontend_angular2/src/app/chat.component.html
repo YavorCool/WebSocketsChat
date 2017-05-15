@@ -1,0 +1,9 @@
+<div class="col-md-12">
+  <div>
+    <ul class="list-group">
+      <li *ngFor="let message of chat_messages" class="list-group-item"><strong>{{ message.author }}</strong> : {{ message.text }}</li>
+    </ul>
+  </div>
+  <input (keyup.enter)="sendMsg()"  placeholder="name" [(ngModel)]="curText"/>
+  <button  (click)="sendMsg()">Отправить</button>
+</div>

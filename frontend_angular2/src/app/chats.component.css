@@ -1,0 +1,27 @@
+.chats-list{
+  overflow-y: scroll;
+  height: 250px;
+}
+
+.users-list{
+  overflow-y: scroll;
+  height: 250px;
+}
+
+.users-list-item:hover{
+  transition: 0.1s;
+  background-color: #696969;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chats-list-item{
+  height: 70px;!important;
+}
+
+.chats-list-item:hover{
+  transition: 0.1s;
+  background-color: #696969;
+  color: #fff;
+  cursor: pointer;
+}
