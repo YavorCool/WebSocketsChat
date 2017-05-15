@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpService} from "./http.service";
-import {CookieService} from "ngx-cookie";
-import {User} from "./user";
+import {Http} from "@angular/http";
 @Component({
   selector: 'my-app',
   template: `
@@ -9,5 +7,9 @@ import {User} from "./user";
   `
 })
 export class AppComponent{
+  constructor(private http: Http){
+    this.http.get('http://localhost:8000', { withCredentials: true }).toPromise()
+      .then();
+  }
 
 }

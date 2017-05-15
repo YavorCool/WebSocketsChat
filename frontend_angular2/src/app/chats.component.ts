@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {HttpService} from "./http.service";
 import {User} from "./user";
@@ -21,12 +20,9 @@ export class ChatsComponent implements OnInit {
   };
 
   constructor(
-    private http: Http,
     private httpService: HttpService,
     private _cookieService: CookieService
   ){
-    this.http.get('http://localhost:8000', { withCredentials: true }).toPromise()
-      .then();
   }
 
   ngOnInit(): void {

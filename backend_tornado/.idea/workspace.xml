@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="df7f2cf5-b4f8-4007-9656-0462a4b78306" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dockerfile" afterPath="$PROJECT_DIR$/Dockerfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbservice.py" afterPath="$PROJECT_DIR$/dbservice.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend_angular2/src/app/app.component.ts" afterPath="$PROJECT_DIR$/../frontend_angular2/src/app/app.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend_angular2/src/app/chats.component.ts" afterPath="$PROJECT_DIR$/../frontend_angular2/src/app/chats.component.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +51,8 @@
       <file leaf-file-name="dbservice.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbservice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+            <state relative-caret-position="594">
+              <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -176,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -191,7 +190,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -501,11 +499,19 @@
       <option name="presentableId" value="Default" />
       <updated>1493823101672</updated>
     </task>
+    <task id="LOCAL-00001" summary="Mongo db fix url">
+      <created>1494856935346</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1494856935346</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="394" y="52" width="1455" height="1028" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17869416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -533,6 +539,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mongo db fix url" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mongo db fix url" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -930,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dbservice.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+        <state relative-caret-position="594">
+          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
