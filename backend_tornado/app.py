@@ -116,6 +116,7 @@ class WebSocketChatHandler(tornado.websocket.WebSocketHandler):
                 clients_online[user[USER_TOKEN_FIELD]] = self
                 for msg in user[USER_MESSAGES_LIST]:
                     self.write_message(json.dumps(msg))
+                user[USER_MESSAGES_LIST] = []
 
     def on_message(self, message):
         msg = json.loads(message)
