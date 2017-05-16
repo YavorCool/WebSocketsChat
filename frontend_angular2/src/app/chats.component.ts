@@ -24,15 +24,13 @@ export class ChatsComponent implements OnInit {
     private httpService: HttpService,
     private _cookieService: CookieService,
     private http: Http
-  ){
-    console.log("Chats constructor called");
-  }
+  ){}
 
   ngOnInit(): void {
     this.http.get('http://localhost:8000', { withCredentials: true }).toPromise()
       .then(() => {
-        this.getCurUser()
-        this.getUsers()
+        this.getCurUser();
+        this.getUsers();
         this.getChats()
       });
 

@@ -5,7 +5,7 @@ import {ChatsComponent} from "./chats.component";
 const routes: Routes = [
   { path: '', redirectTo: '/chats', pathMatch: 'full' },
   { path:'chats', component: ChatsComponent },
-  { path: 'chat/:token', component: ChatComponent },
+  { path: 'chat/:token/:username', component: ChatComponent },
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

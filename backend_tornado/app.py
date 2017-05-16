@@ -30,7 +30,6 @@ for h in handlers:
     h.setLevel(logging.DEBUG)
     root_logger.addHandler(h)
 
-
 class UsersHandler(tornado.web.RequestHandler):
 
     def set_default_headers(self):
@@ -43,8 +42,6 @@ class UsersHandler(tornado.web.RequestHandler):
         return
 
     def get(self):
-        logging.info("UsersHandler: user token: {}".format(self.get_cookie(USER_TOKEN_FIELD)))
-        logging.info("users for User: {}".format(db_service.get_user(self.get_cookie(USER_TOKEN_FIELD))))
         self.write(json_encode(db_service.get_all_users()))
 
 
@@ -59,7 +56,6 @@ class UserHandler(tornado.web.RequestHandler):
         pass
 
     def get(self, *args, **kwargs):
-        logging.info("UserHandler: user for User: {}".format(db_service.get_user(self.get_argument(USER_TOKEN_FIELD))))
         self.write(json_encode(db_service.get_user(self.get_argument(USER_TOKEN_FIELD))))
 
 
@@ -75,7 +71,6 @@ class IndexHandler(tornado.web.RequestHandler):
         pass
 
     def get(self, *args, **kwargs):
-        logging.info("Index handler get()")
         if not self.get_cookie(USER_TOKEN_FIELD):
             username = 'user_' + db_service.get_all_users().__len__().__str__()
             token = hashlib.sha256(username.encode()).hexdigest()
@@ -87,7 +82,6 @@ class IndexHandler(tornado.web.RequestHandler):
             }
             db_service.insert_user(user)
             self.set_cookie(USER_TOKEN_FIELD, token)
-            logging.info("New user: username = {}".format(username))
             self.write("OK")
 
 
@@ -102,17 +96,14 @@ class ChatsHandler(tornado.web.RequestHandler):
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
 
     def get(self):
-        logging.info("Chats handler get()")
         users_to_chat_with = []
         user = db_service.get_user(self.get_cookie(USER_TOKEN_FIELD))
         if user:
-            logging.info("chats for User: {}".format(user))
             for chat in user[USER_CHATS_LIST]:
                 users_to_chat_with.append(db_service.get_user(chat[CHAT_RECIPIENT_TOKEN_FIELD]))
             self.write(json_encode(users_to_chat_with))
 
     def post(self, *args, **kwargs):
-        logging.info("Chats handler post()")
         data = json_decode(self.request.body)
         recipient_token = data[CHAT_RECIPIENT_TOKEN_FIELD]
         if recipient_token:
@@ -136,16 +127,13 @@ class WebSocketChatHandler(tornado.websocket.WebSocketHandler):
 
     def open(self, *args):
         user = db_service.get_user(self.get_cookie(USER_TOKEN_FIELD))
-        logging.info("Websocket opened, user: {}".format(user))
         if user:
             if user[USER_TOKEN_FIELD] not in clients_online.keys():
                 clients_online[user[USER_TOKEN_FIELD]] = self
-                logging.info("Messages before update: {}".format(user[USER_MESSAGES_LIST]))
                 for msg in user[USER_MESSAGES_LIST]:
                     self.write_message(json.dumps(msg))
                 user[USER_MESSAGES_LIST].clear()
                 db_service.update_user(user)
-                logging.info("Messages after update: {}".format(db_service.get_user(self.get_cookie(USER_TOKEN_FIELD))[USER_MESSAGES_LIST]))
 
     def on_message(self, message):
         msg = json.loads(message)
@@ -155,15 +143,12 @@ class WebSocketChatHandler(tornado.websocket.WebSocketHandler):
             clients_online[msg[MSG_RECIPIENT_FIELD]].write_message(message)
         else:
             recipient = db_service.get_user(recipient_token)
-            logging.info("recipient not online, {}".format(recipient))
             if recipient:
                 recipient[USER_MESSAGES_LIST].append(msg)
                 db_service.update_user(recipient)
-                logging.info("Recipient updated: {} ".format(db_service.get_user(recipient_token)))
 
     def on_close(self):
         del clients_online[self.get_cookie(USER_TOKEN_FIELD)]
-        logging.info("Socket closed: {}".format(clients_online))
 
 
 app = tornado.web.Application([
@@ -175,8 +160,6 @@ app = tornado.web.Application([
 ])
 
 if __name__ == '__main__':
-    logging.info("Server started")
-    logging.info("Database cleared")
     parse_command_line()
     app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()

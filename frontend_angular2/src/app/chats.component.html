@@ -1,14 +1,12 @@
-<div class="col-md-12">
-  <h2>{{ user.username }}</h2>
-  <h3>Выберите пользователя из списка справа</h3>
-</div>
-<div class="col-md-4">
+<h2>{{ user.username }}</h2>
+<h3>Выберите пользователя из списка справа</h3>
+<div class="col-md-2">
   <ul class="list-group chats-list">
-    <li *ngFor= "let chat of chats" class="list-group-item  chats-list-item" [routerLink]="['/chat', chat.token]"> {{ chat.username }} </li>
+    <li *ngFor= "let chat of chats" class="list-group-item  chats-list-item" [routerLink]="['/chat', chat.token, chat.username]"> {{ chat.username }} </li>
   </ul>
 </div>
 
-<div class="col-md-2">
+<div class="col-md-4">
   <ul class="list-group users-list">
     <li *ngFor= "let user of users" class="list-group-item  users-list-item" (click) = addChat(user)> {{ user.username }} </li>
   </ul>
