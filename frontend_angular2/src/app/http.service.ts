@@ -13,6 +13,7 @@ export class HttpService {
   constructor(private http: Http){}
 
   getChats(): Promise<User[]>{
+    console.log("HttpService.getChats()");
     return this.http.get(this.chats_url, { withCredentials: true })
       .toPromise()
       .then(response => response.json() as User[])
@@ -20,6 +21,7 @@ export class HttpService {
   }
 
   getUser(token: string): Promise<User>{
+    console.log("HttpService.getUser()");
     let params: URLSearchParams = new URLSearchParams();
     params.set('token', token);
 
@@ -31,6 +33,7 @@ export class HttpService {
   }
 
   getUsers(): Promise<User[]>{
+    console.log("HttpService.getUsers()");
     return this.http.get(this.users_url)
       .toPromise()
       .then(response => response.json() as User[])
@@ -38,6 +41,7 @@ export class HttpService {
   }
 
   addChat(user: User) {
+    console.log("HttpService.addChat()");
     let body = "recipient="+user.token;
     let options = new RequestOptions({
       withCredentials: true

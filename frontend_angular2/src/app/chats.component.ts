@@ -3,6 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import {HttpService} from "./http.service";
 import {User} from "./user";
 import {CookieService} from "ngx-cookie";
+import {Http} from "@angular/http";
 
 @Component({
   moduleId: module.id,
@@ -21,14 +22,20 @@ export class ChatsComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private http: Http
   ){
+    console.log("Chats constructor called");
   }
 
   ngOnInit(): void {
-    this.getCurUser();
-    this.getUsers();
-    this.getChats();
+    this.http.get('http://localhost:8000', { withCredentials: true }).toPromise()
+      .then(() => {
+        this.getCurUser()
+        this.getUsers()
+        this.getChats()
+      });
+
   }
 
   getCurUser(): void{
@@ -44,6 +51,9 @@ export class ChatsComponent implements OnInit {
   }
 
   addChat(user: User){
+    if(this._cookieService.get("token") == user.token){
+      return;
+    }
     for(let i = 0; i < this.chats.length; i++){
       if(this.chats[i] == user){
         return;

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ChatService} from "./chat.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import { CookieService} from "ngx-cookie";
@@ -19,7 +19,7 @@ export class ChatItem{
   selector: 'chat',
   templateUrl: 'chat.component.html'
 })
-export class ChatComponent implements OnInit{
+export class ChatComponent {
   curText : string = "";
 
   recipient_loaded: boolean = false;
@@ -40,15 +40,22 @@ export class ChatComponent implements OnInit{
   constructor(private chatService: ChatService,    private route: ActivatedRoute,
               private location: Location, private _cookieService: CookieService, private httpService: HttpService) {
 
+    console.log("Chat constructor called");
+
     this.route.params
       .switchMap((params: Params) => this.httpService.getUser(params['token']))
-      .subscribe(user => this.recipient = user);
+      .subscribe(user => {
+        this.recipient = user;
+        console.log("Recipient: " + this.recipient);
+        this.msgSubscribe();
+      });
 
       this.httpService.getUser(this._cookieService.get("token")).then(user => this.sender = user);
   }
 
-  ngOnInit(): void {
+  msgSubscribe(): void {
     this.chatService.messages.subscribe(msg => {
+      console.log(this.recipient.username + ": " +  msg.text);
       let chatMsg: ChatItem = {
         text: msg.text,
         author: this.recipient.username
